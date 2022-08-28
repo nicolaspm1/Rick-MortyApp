@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         userField.autocapitalizationType = .none
         userField.autocorrectionType = .no
         userField.setHeight(40)
+        userField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return userField
     }()
     
@@ -50,6 +51,7 @@ class LoginViewController: UIViewController {
         passwordField.autocapitalizationType = .none
         passwordField.isSecureTextEntry = true
         passwordField.setHeight(40)
+        passwordField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
         return passwordField
     }()
     
@@ -110,6 +112,7 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         self.title = "Login"
         setup()
+        configureTapGesture()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -120,10 +123,12 @@ class LoginViewController: UIViewController {
     
     @objc func signIn() {
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
+        view.endEditing(true)
     }
     
     @objc func signUp(){
-        
+        // Here comes the viewmodel method to create a user and log in to the home
+        view.endEditing(true)
     }
     
     private func setup(){
@@ -156,11 +161,51 @@ class LoginViewController: UIViewController {
     }
 }
 
+//MARK: - TextFieldDelegate and textfield behaviours/settings
+
 extension LoginViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.endEditing(true)
+        textField.resignFirstResponder()
         return true
     }
     
+    
+    @objc private func textDidChange(_ textField: UITextField) {
+        
+        loginButton.isEnabled = false
+        signUpButton.isEnabled = false
+        
+        guard let user = userNameTextField.text, user != "" else {
+            return
+        }
+        
+        guard let password = passwordTextField.text, password != "" else {
+            return
+        }
+        
+        enableButtons()
+    }
+    
+    
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    @objc private func handleTap(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+}
+
+//MARK: - Enable Button
+extension LoginViewController {
+    
+    private func enableButtons() {
+        [loginButton, signUpButton].forEach { button in
+            button.isEnabled = true
+        }
+    }
 }
