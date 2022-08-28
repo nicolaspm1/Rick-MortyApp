@@ -70,7 +70,7 @@ class LoginViewController: UIViewController {
         let color = UIColor(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
         button.backgroundColor = color.withAlphaComponent(0.5)
         button.setTitleColor(UIColor(named: "White"), for: .normal)
-        button.isEnabled = true
+        button.isEnabled = false
         button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
         return button
     }()
@@ -116,7 +116,6 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         userNameTextField.text = ""
         passwordTextField.text = ""
-        userNameTextField.becomeFirstResponder()
     }
     
     @objc func signIn() {
