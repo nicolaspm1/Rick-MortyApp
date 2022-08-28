@@ -153,6 +153,7 @@ class LoginViewController: UIViewController {
     private func setConstraints() {
         image.setHeight(80)
         stack.centerX(inView: self.view, topAnchor: self.view.safeAreaLayoutGuide.topAnchor, paddingTop: 40)
+        stack.anchor( left: self.view.safeAreaLayoutGuide.leftAnchor, right: self.view.safeAreaLayoutGuide.rightAnchor,  paddingLeft: 20,  paddingRight: 20)
     }
     
     private func setDelegates() {

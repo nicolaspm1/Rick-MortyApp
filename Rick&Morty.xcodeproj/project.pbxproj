@@ -50,7 +50,6 @@
 				E79DD5FA4304AE0AED394C8E /* Pods-Rick&Morty.debug.xcconfig */,
 				8F1598C5F3CD478181D6BECF /* Pods-Rick&Morty.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -86,11 +85,11 @@
 				C1F628A328B5BDD800D6170E /* AppDelegate.swift */,
 				C1F628A528B5BDD800D6170E /* SceneDelegate.swift */,
 				C1F628A728B5BDD800D6170E /* LoginViewController.swift */,
+				C16AD55428BAC07500A1F225 /* HomeViewController.swift */,
 				C1F628B728B5C04D00D6170E /* ExtensionForConstraints.swift */,
 				C1F628AC28B5BDDB00D6170E /* Assets.xcassets */,
 				C1F628AE28B5BDDB00D6170E /* LaunchScreen.storyboard */,
 				C1F628B128B5BDDB00D6170E /* Info.plist */,
-				C16AD55428BAC07500A1F225 /* HomeViewController.swift */,
 			);
 			path = "Rick&Morty";
 			sourceTree = "<group>";
