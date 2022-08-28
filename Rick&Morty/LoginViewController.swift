@@ -112,6 +112,12 @@ class LoginViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        userNameTextField.text = ""
+        passwordTextField.text = ""
+        userNameTextField.becomeFirstResponder()
+    }
     
     @objc func signIn() {
         self.navigationController?.pushViewController(HomeViewController(), animated: true)
@@ -153,12 +159,8 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: UITextFieldDelegate {
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.text = ""
-    }
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        textField.endEditing(true)
         return true
     }
     
