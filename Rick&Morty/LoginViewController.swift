@@ -16,7 +16,7 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
-    private let userNameTextField: UITextField = {
+    private lazy var userNameTextField: UITextField = {
         let spacer = UIView()
         spacer.setDimensions(height: 40, width: 12)
         
@@ -35,7 +35,7 @@ class LoginViewController: UIViewController {
         return userField
     }()
     
-    private let passwordTextField: UITextField = {
+    private lazy var passwordTextField: UITextField = {
         
         let spacer = UIView()
         spacer.setDimensions(height: 40, width: 12)
@@ -66,7 +66,7 @@ class LoginViewController: UIViewController {
     }()
     
     
-    private let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
         let color = UIColor(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
@@ -77,7 +77,7 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let signUpButton: UIButton = {
+    private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign up", for: .normal)
         let color = UIColor(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
