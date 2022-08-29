@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C16AD55528BAC07500A1F225 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16AD55428BAC07500A1F225 /* HomeViewController.swift */; };
+		C1D0A8FB28BC497E00930A6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */; };
 		C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A328B5BDD800D6170E /* AppDelegate.swift */; };
 		C1F628A628B5BDD800D6170E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A528B5BDD800D6170E /* SceneDelegate.swift */; };
 		C1F628A828B5BDD800D6170E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A728B5BDD800D6170E /* LoginViewController.swift */; };
@@ -21,6 +22,7 @@
 		010EF8AFEA573FD8D83DB691 /* Pods_Rick_Morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rick_Morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1598C5F3CD478181D6BECF /* Pods-Rick&Morty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rick&Morty.release.xcconfig"; path = "Target Support Files/Pods-Rick&Morty/Pods-Rick&Morty.release.xcconfig"; sourceTree = "<group>"; };
 		C16AD55428BAC07500A1F225 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F628A028B5BDD800D6170E /* Rick&Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick&Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F628A328B5BDD800D6170E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C1F628A528B5BDD800D6170E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +63,80 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C1D0A8FC28BC58D200930A6C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C1D0A8FD28BC58DA00930A6C /* Modules */,
+				C1D0A8FE28BC58E300930A6C /* Shared */,
+				C1D0A8FF28BC58E900930A6C /* Utils */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C1D0A8FD28BC58DA00930A6C /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				C1D0A90328BC594000930A6C /* Home */,
+				C1D0A90028BC591400930A6C /* Login */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		C1D0A8FE28BC58E300930A6C /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		C1D0A8FF28BC58E900930A6C /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C1F628B728B5C04D00D6170E /* ExtensionForConstraints.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C1D0A90028BC591400930A6C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				C1D0A90128BC592100930A6C /* View */,
+				C1D0A90228BC592800930A6C /* ViewModel */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		C1D0A90128BC592100930A6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C1F628A728B5BDD800D6170E /* LoginViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		C1D0A90228BC592800930A6C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C1D0A90328BC594000930A6C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C1D0A90428BC594600930A6C /* View */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		C1D0A90428BC594600930A6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C16AD55428BAC07500A1F225 /* HomeViewController.swift */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		C1F6289728B5BDD800D6170E = {
 			isa = PBXGroup;
 			children = (
@@ -82,14 +158,13 @@
 		C1F628A228B5BDD800D6170E /* Rick&Morty */ = {
 			isa = PBXGroup;
 			children = (
+				C1D0A8FC28BC58D200930A6C /* App */,
 				C1F628A328B5BDD800D6170E /* AppDelegate.swift */,
 				C1F628A528B5BDD800D6170E /* SceneDelegate.swift */,
-				C1F628A728B5BDD800D6170E /* LoginViewController.swift */,
-				C16AD55428BAC07500A1F225 /* HomeViewController.swift */,
-				C1F628B728B5C04D00D6170E /* ExtensionForConstraints.swift */,
 				C1F628AC28B5BDDB00D6170E /* Assets.xcassets */,
 				C1F628AE28B5BDDB00D6170E /* LaunchScreen.storyboard */,
 				C1F628B128B5BDDB00D6170E /* Info.plist */,
+				C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */,
 			);
 			path = "Rick&Morty";
 			sourceTree = "<group>";
@@ -156,6 +231,7 @@
 			files = (
 				C1F628B028B5BDDB00D6170E /* LaunchScreen.storyboard in Resources */,
 				C1F628AD28B5BDDB00D6170E /* Assets.xcassets in Resources */,
+				C1D0A8FB28BC497E00930A6C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

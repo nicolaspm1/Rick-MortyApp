@@ -9,4 +9,7 @@ target 'Rick&Morty' do
 
   pod 'IQKeyboardManagerSwift'
 
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
+
 end
