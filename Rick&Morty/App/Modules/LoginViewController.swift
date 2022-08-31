@@ -69,8 +69,7 @@ class LoginViewController: UIViewController {
     private lazy var loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign in", for: .normal)
-        let color = UIColor(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        button.backgroundColor = color.withAlphaComponent(0.5)
+        button.backgroundColor = .systemGray
         button.setTitleColor(UIColor(named: "White"), for: .normal)
         button.isEnabled = false
         button.addTarget(self, action: #selector(signIn), for: .touchUpInside)
@@ -80,8 +79,7 @@ class LoginViewController: UIViewController {
     private lazy var signUpButton: UIButton = {
         let button = UIButton()
         button.setTitle("Sign up", for: .normal)
-        let color = UIColor(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1)
-        button.backgroundColor = color.withAlphaComponent(0.5)
+        button.backgroundColor = .systemGray
         button.setTitleColor(UIColor(named: "White"), for: .normal)
         button.isEnabled = false
         button.addTarget(self, action: #selector(signUp), for: .touchUpInside)
@@ -119,6 +117,7 @@ class LoginViewController: UIViewController {
         super.viewWillAppear(animated)
         userNameTextField.text = ""
         passwordTextField.text = ""
+        disableButtons()
     }
     
     @objc func signIn() {
@@ -160,6 +159,13 @@ class LoginViewController: UIViewController {
         userNameTextField.delegate = self
         passwordTextField.delegate = self
     }
+    
+    private func disableButtons() {
+        loginButton.backgroundColor = .systemGray
+        loginButton.isEnabled = false
+        signUpButton.backgroundColor = .systemGray
+        signUpButton.isEnabled = false
+    }
 }
 
 //MARK: - TextFieldDelegate and textfield behaviours/settings
@@ -174,8 +180,7 @@ extension LoginViewController: UITextFieldDelegate {
     
     @objc private func textDidChange(_ textField: UITextField) {
         
-        loginButton.isEnabled = false
-        signUpButton.isEnabled = false
+        disableButtons()
         
         guard let user = userNameTextField.text, user != "" else {
             return
@@ -207,6 +212,7 @@ extension LoginViewController {
     private func enableButtons() {
         [loginButton, signUpButton].forEach { button in
             button.isEnabled = true
+            button.backgroundColor = .systemBlue
         }
     }
 }
