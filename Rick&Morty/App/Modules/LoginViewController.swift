@@ -9,6 +9,13 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
+    private let loginViewModel: LoginViewModel = {
+        let model = LoginViewModel()
+        return model
+    }()
+    
+    // UIKit subviews
+    
     private let image: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -86,16 +93,6 @@ class LoginViewController: UIViewController {
         return button
     }()
     
-    private let stack: UIStackView = {
-        let stack = UIStackView()
-        stack.spacing = 25
-        stack.axis = .vertical
-        stack.distribution = .fill
-        stack.alignment = .fill
-        return stack
-    }()
-    
-    
     private let buttonStack: UIStackView = {
         let stack = UIStackView()
         stack.spacing = 25
@@ -105,6 +102,32 @@ class LoginViewController: UIViewController {
         return stack
     }()
     
+    private let optionLabel: UILabel = {
+        let label = UILabel()
+        label.text = "OR"
+        label.textAlignment = .center
+        label.font = UIFont.boldSystemFont(ofSize: 14.0)
+        return label
+    }()
+    
+    
+    private lazy var signUpWithGoogleButton: UIButton = {
+        let button = UIButton()
+        button.setBackgroundImage(UIImage(named: "google_sign_up"), for: .normal)
+        button.addTarget(self, action: #selector(signUpWithGoogle), for: .touchUpInside)
+        return button
+    }()
+    
+    private let stack: UIStackView = {
+        let stack = UIStackView()
+        stack.spacing = 20
+        stack.axis = .vertical
+        stack.distribution = .fill
+        stack.alignment = .fill
+        return stack
+    }()
+    
+    // ViewController Life's Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,15 +143,20 @@ class LoginViewController: UIViewController {
         disableButtons()
     }
     
-    @objc func signIn() {
-        self.navigationController?.pushViewController(HomeViewController(), animated: true)
+    @objc private func signIn() {
+        self.loginViewModel.signInUserWith(email: userNameTextField.text!, password: passwordTextField.text!)
         view.endEditing(true)
     }
     
-    @objc func signUp(){
-        // Here comes the viewmodel method to create a user and log in to the home
+    @objc private func signUp(){
+        self.loginViewModel.signUpUserWith(email: userNameTextField.text!, password: passwordTextField.text!)
         view.endEditing(true)
     }
+    
+    @objc private func signUpWithGoogle() {
+        
+    }
+    
     
     private func setup(){
         self.view.backgroundColor = .white
@@ -144,13 +172,14 @@ class LoginViewController: UIViewController {
             buttonStack.addArrangedSubview(subView)
         }
         
-        [image, userNameTextField, passwordTextField, errorMessage, buttonStack].forEach { subview in
+        [image, userNameTextField, passwordTextField, errorMessage, buttonStack, optionLabel, signUpWithGoogleButton].forEach { subview in
             stack.addArrangedSubview(subview)
         }
     }
     
     private func setConstraints() {
         image.setHeight(80)
+        signUpWithGoogleButton.setHeight(100)
         stack.centerX(inView: self.view, topAnchor: self.view.safeAreaLayoutGuide.topAnchor, paddingTop: 40)
         stack.anchor( left: self.view.safeAreaLayoutGuide.leftAnchor, right: self.view.safeAreaLayoutGuide.rightAnchor,  paddingLeft: 20,  paddingRight: 20)
     }
@@ -158,14 +187,9 @@ class LoginViewController: UIViewController {
     private func setDelegates() {
         userNameTextField.delegate = self
         passwordTextField.delegate = self
+        loginViewModel.delegate = self
     }
     
-    private func disableButtons() {
-        loginButton.backgroundColor = .systemGray
-        loginButton.isEnabled = false
-        signUpButton.backgroundColor = .systemGray
-        signUpButton.isEnabled = false
-    }
 }
 
 //MARK: - TextFieldDelegate and textfield behaviours/settings
@@ -209,10 +233,37 @@ extension LoginViewController: UITextFieldDelegate {
 //MARK: - Enable Button
 extension LoginViewController {
     
+    private func disableButtons() {
+        [loginButton, signUpButton].forEach { button in
+            button.isEnabled = false
+            button.backgroundColor = .systemGray
+        }
+    }
+    
     private func enableButtons() {
         [loginButton, signUpButton].forEach { button in
             button.isEnabled = true
             button.backgroundColor = .systemBlue
         }
     }
+}
+
+//MARK: - LoginViewModel
+extension LoginViewController: LoginViewModelDelegate {
+    
+    func didSuccess() {
+        DispatchQueue.main.async { [weak self] in
+            let home = HomeViewController()
+            self?.navigationController?.pushViewController(home, animated: true)
+        }
+    }
+    
+    func didFail(error: String) {
+        DispatchQueue.main.async { [weak self] in
+            self?.errorMessage.text = error
+            self?.errorMessage.isHidden = false
+        }
+    }
+    
+    
 }

@@ -11,5 +11,7 @@ target 'Rick&Morty' do
 
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'GoogleSignIn'
+  
 
 end
