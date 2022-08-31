@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 protocol LoginViewModelDelegate: AnyObject {
     func didSuccess()
@@ -18,11 +19,11 @@ class LoginViewModel {
     weak var delegate: LoginViewModelDelegate?
     
     
-    func signInUserWith(email: String, password: String) {
+    func signInUserWith(email: String, password: String, from vc: UIViewController) {
         
     }
     
-    func signUpUserWith(email: String, password: String) {
+    func signUpUserWith(email: String, password: String, from vc: UIViewController) {
         
     }
     
