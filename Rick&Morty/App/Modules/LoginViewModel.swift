@@ -7,6 +7,8 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
+import GoogleSignIn
 
 protocol LoginViewModelDelegate: AnyObject {
     func didSuccess()
@@ -43,4 +45,39 @@ class LoginViewModel {
         
     }
     
+    func signInWithGoogle(from: UIViewController) {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: from) { [unowned self] user, error in
+            
+            if let error = error {
+                self.delegate?.didFail(error: error.localizedDescription)
+                return
+            }
+            
+            guard
+                let authentication = user?.authentication,
+                let idToken = authentication.idToken
+            else {
+                return
+            }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: authentication.accessToken)
+            
+            // Sign In
+            Auth.auth().signIn(with: credential) { (authResult, error) in
+                if let error = error {
+                    self.delegate?.didFail(error: error.localizedDescription)
+                    return
+                }
+                self.delegate?.didSuccess()
+            }
+            
+        }
+    }
 }

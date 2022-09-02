@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -68,7 +69,6 @@ class LoginViewController: UIViewController {
         label.text = "Error message"
         label.textColor = .red
         label.numberOfLines = 0
-        label.isHidden = true
         return label
     }()
     
@@ -110,11 +110,10 @@ class LoginViewController: UIViewController {
         return label
     }()
     
-    
-    private lazy var signUpWithGoogleButton: UIButton = {
-        let button = UIButton()
-        button.setBackgroundImage(UIImage(named: "google_sign_up"), for: .normal)
-        button.addTarget(self, action: #selector(signUpWithGoogle), for: .touchUpInside)
+    private lazy var signInWithGooglebutton: GIDSignInButton = {
+        let button = GIDSignInButton()
+        button.colorScheme = .dark
+        button.addTarget(self, action: #selector(signInWithGoogle), for: .touchUpInside)
         return button
     }()
     
@@ -153,13 +152,14 @@ class LoginViewController: UIViewController {
         view.endEditing(true)
     }
     
-    @objc private func signUpWithGoogle() {
-        
+    @objc private func signInWithGoogle() {
+        self.loginViewModel.signInWithGoogle(from: self)
     }
     
     
     private func setup(){
         self.view.backgroundColor = .white
+        errorMessage.isHidden = true
         addSubviews()
         setConstraints()
         setDelegates()
@@ -172,14 +172,13 @@ class LoginViewController: UIViewController {
             buttonStack.addArrangedSubview(subView)
         }
         
-        [image, userNameTextField, passwordTextField, errorMessage, buttonStack, optionLabel, signUpWithGoogleButton].forEach { subview in
+        [image, userNameTextField, passwordTextField, errorMessage, buttonStack, optionLabel, signInWithGooglebutton].forEach { subview in
             stack.addArrangedSubview(subview)
         }
     }
     
     private func setConstraints() {
         image.setHeight(80)
-        signUpWithGoogleButton.setHeight(100)
         stack.centerX(inView: self.view, topAnchor: self.view.safeAreaLayoutGuide.topAnchor, paddingTop: 40)
         stack.anchor( left: self.view.safeAreaLayoutGuide.leftAnchor, right: self.view.safeAreaLayoutGuide.rightAnchor,  paddingLeft: 20,  paddingRight: 20)
     }
@@ -215,17 +214,6 @@ extension LoginViewController: UITextFieldDelegate {
         }
         
         enableButtons()
-    }
-    
-    
-    private func configureTapGesture() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
-        self.view.addGestureRecognizer(tapGesture)
-    }
-    
-    
-    @objc private func handleTap(gesture: UITapGestureRecognizer) {
-        view.endEditing(true)
     }
     
 }
@@ -266,4 +254,31 @@ extension LoginViewController: LoginViewModelDelegate {
     }
     
     
+}
+
+
+//MARK: - UiGestureRecognizerDelegate
+
+extension LoginViewController: UIGestureRecognizerDelegate {
+    
+    private func configureTapGesture() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(gesture:)))
+        tapGesture.delegate = self
+        tapGesture.cancelsTouchesInView = false
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    
+    @objc private func handleTap(gesture: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        
+        if touch.view is GIDSignInButton {
+            return false
+        }
+        
+        return true
+    }
 }

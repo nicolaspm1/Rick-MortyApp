@@ -24,6 +24,7 @@ class HomeViewController: UIViewController {
     
     
     @objc func logOut() {
+        
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()
