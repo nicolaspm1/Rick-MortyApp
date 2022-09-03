@@ -16,7 +16,6 @@ class LoginViewController: UIViewController {
     }()
     
     // UIKit subviews
-    
     private let image: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -27,7 +26,6 @@ class LoginViewController: UIViewController {
     private lazy var userNameTextField: UITextField = {
         let spacer = UIView()
         spacer.setDimensions(height: 40, width: 12)
-        
         let userField = UITextField()
         userField.leftView = spacer
         userField.leftViewMode = .always
@@ -44,10 +42,8 @@ class LoginViewController: UIViewController {
     }()
     
     private lazy var passwordTextField: UITextField = {
-        
         let spacer = UIView()
         spacer.setDimensions(height: 40, width: 12)
-        
         let passwordField = UITextField()
         passwordField.leftView = spacer
         passwordField.leftViewMode = .always
@@ -142,6 +138,10 @@ class LoginViewController: UIViewController {
         disableButtons()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        errorMessage.isHidden = true
+    }
+    
     @objc private func signIn() {
         self.loginViewModel.signInUserWith(email: userNameTextField.text!, password: passwordTextField.text!)
         view.endEditing(true)
@@ -200,9 +200,7 @@ extension LoginViewController: UITextFieldDelegate {
         return true
     }
     
-    
     @objc private func textDidChange(_ textField: UITextField) {
-        
         disableButtons()
         
         guard let user = userNameTextField.text, user != "" else {
@@ -215,7 +213,6 @@ extension LoginViewController: UITextFieldDelegate {
         
         enableButtons()
     }
-    
 }
 
 //MARK: - Enable Button
@@ -236,7 +233,7 @@ extension LoginViewController {
     }
 }
 
-//MARK: - LoginViewModel
+//MARK: - LoginViewModelDelegate
 extension LoginViewController: LoginViewModelDelegate {
     
     func didSuccess() {
@@ -253,9 +250,7 @@ extension LoginViewController: LoginViewModelDelegate {
         }
     }
     
-    
 }
-
 
 //MARK: - UiGestureRecognizerDelegate
 
@@ -267,7 +262,6 @@ extension LoginViewController: UIGestureRecognizerDelegate {
         tapGesture.cancelsTouchesInView = false
         self.view.addGestureRecognizer(tapGesture)
     }
-    
     
     @objc private func handleTap(gesture: UITapGestureRecognizer) {
         view.endEditing(true)
