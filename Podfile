@@ -13,5 +13,6 @@ target 'Rick&Morty' do
   pod 'FirebaseFirestore'
   pod 'GoogleSignIn'
   
+  pod 'Alamofire'
 
 end
