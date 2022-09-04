@@ -10,6 +10,8 @@
 		C114EDD828BEF7A70048352F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EDD728BEF7A70048352F /* LoginViewModel.swift */; };
 		C114EDDA28BEFB280048352F /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EDD928BEFB280048352F /* Spinner.swift */; };
 		C120E6EC28C014D7000CB1BF /* ExtensionSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120E6EB28C014D7000CB1BF /* ExtensionSceneDelegate.swift */; };
+		C13D2CB028C420D200409B24 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D2CAF28C420D200409B24 /* CollectionViewTableViewCell.swift */; };
+		C13D2CB628C453D500409B24 /* HeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C13D2CB528C453D400409B24 /* HeaderUIView.swift */; };
 		C16AD55528BAC07500A1F225 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16AD55428BAC07500A1F225 /* HomeViewController.swift */; };
 		C1D0A8FB28BC497E00930A6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */; };
 		C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A328B5BDD800D6170E /* AppDelegate.swift */; };
@@ -27,6 +29,8 @@
 		C114EDD728BEF7A70048352F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C114EDD928BEFB280048352F /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		C120E6EB28C014D7000CB1BF /* ExtensionSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSceneDelegate.swift; sourceTree = "<group>"; };
+		C13D2CAF28C420D200409B24 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		C13D2CB528C453D400409B24 /* HeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderUIView.swift; sourceTree = "<group>"; };
 		C16AD55428BAC07500A1F225 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F628A028B5BDD800D6170E /* Rick&Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick&Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -67,6 +71,45 @@
 				010EF8AFEA573FD8D83DB691 /* Pods_Rick_Morty.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C13D2CAE28C41FB500409B24 /* SubViews */ = {
+			isa = PBXGroup;
+			children = (
+				C13D2CB328C43F5700409B24 /* Cells */,
+				C13D2CB428C43F5D00409B24 /* HeaderTableView */,
+			);
+			name = SubViews;
+			sourceTree = "<group>";
+		};
+		C13D2CB128C42DE700409B24 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = ViewModel;
+			sourceTree = "<group>";
+		};
+		C13D2CB228C42DEE00409B24 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Service;
+			sourceTree = "<group>";
+		};
+		C13D2CB328C43F5700409B24 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				C13D2CAF28C420D200409B24 /* CollectionViewTableViewCell.swift */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
+		C13D2CB428C43F5D00409B24 /* HeaderTableView */ = {
+			isa = PBXGroup;
+			children = (
+				C13D2CB528C453D400409B24 /* HeaderUIView.swift */,
+			);
+			name = HeaderTableView;
 			sourceTree = "<group>";
 		};
 		C1D0A8FC28BC58D200930A6C /* App */ = {
@@ -133,7 +176,9 @@
 		C1D0A90328BC594000930A6C /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				C13D2CB228C42DEE00409B24 /* Service */,
 				C1D0A90428BC594600930A6C /* View */,
+				C13D2CB128C42DE700409B24 /* ViewModel */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -141,6 +186,7 @@
 		C1D0A90428BC594600930A6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				C13D2CAE28C41FB500409B24 /* SubViews */,
 				C16AD55428BAC07500A1F225 /* HomeViewController.swift */,
 			);
 			name = View;
@@ -298,9 +344,11 @@
 				C114EDD828BEF7A70048352F /* LoginViewModel.swift in Sources */,
 				C114EDDA28BEFB280048352F /* Spinner.swift in Sources */,
 				C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */,
+				C13D2CB028C420D200409B24 /* CollectionViewTableViewCell.swift in Sources */,
 				C120E6EC28C014D7000CB1BF /* ExtensionSceneDelegate.swift in Sources */,
 				C1F628A628B5BDD800D6170E /* SceneDelegate.swift in Sources */,
 				C16AD55528BAC07500A1F225 /* HomeViewController.swift in Sources */,
+				C13D2CB628C453D500409B24 /* HeaderUIView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
