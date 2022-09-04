@@ -15,6 +15,10 @@
 		C16AD55528BAC07500A1F225 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C16AD55428BAC07500A1F225 /* HomeViewController.swift */; };
 		C180E49F28C51BAF004E6FFA /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180E49E28C51BAF004E6FFA /* APIManager.swift */; };
 		C180E4A128C51D6C004E6FFA /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180E4A028C51D6C004E6FFA /* Constants.swift */; };
+		C180E4A328C52094004E6FFA /* HomeDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180E4A228C52094004E6FFA /* HomeDataService.swift */; };
+		C180E4A628C5285B004E6FFA /* CharactersResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C180E4A528C5285B004E6FFA /* CharactersResponse.swift */; };
+		C1BAE79B28C52AA400B6DE84 /* EpisodesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAE79A28C52AA400B6DE84 /* EpisodesResponse.swift */; };
+		C1BAE79D28C52B6700B6DE84 /* LocationsResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1BAE79C28C52B6700B6DE84 /* LocationsResponse.swift */; };
 		C1D0A8FB28BC497E00930A6C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */; };
 		C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A328B5BDD800D6170E /* AppDelegate.swift */; };
 		C1F628A628B5BDD800D6170E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1F628A528B5BDD800D6170E /* SceneDelegate.swift */; };
@@ -36,6 +40,10 @@
 		C16AD55428BAC07500A1F225 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C180E49E28C51BAF004E6FFA /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		C180E4A028C51D6C004E6FFA /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C180E4A228C52094004E6FFA /* HomeDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDataService.swift; sourceTree = "<group>"; };
+		C180E4A528C5285B004E6FFA /* CharactersResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersResponse.swift; sourceTree = "<group>"; };
+		C1BAE79A28C52AA400B6DE84 /* EpisodesResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpisodesResponse.swift; sourceTree = "<group>"; };
+		C1BAE79C28C52B6700B6DE84 /* LocationsResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationsResponse.swift; sourceTree = "<group>"; };
 		C1D0A8FA28BC497E00930A6C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C1F628A028B5BDD800D6170E /* Rick&Morty.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Rick&Morty.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C1F628A328B5BDD800D6170E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -96,6 +104,7 @@
 		C13D2CB228C42DEE00409B24 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				C180E4A228C52094004E6FFA /* HomeDataService.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -125,6 +134,16 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		C180E4A428C5284B004E6FFA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C180E4A528C5285B004E6FFA /* CharactersResponse.swift */,
+				C1BAE79A28C52AA400B6DE84 /* EpisodesResponse.swift */,
+				C1BAE79C28C52B6700B6DE84 /* LocationsResponse.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		C1D0A8FC28BC58D200930A6C /* App */ = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +166,7 @@
 		C1D0A8FE28BC58E300930A6C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				C180E4A428C5284B004E6FFA /* Models */,
 				C180E49D28C51B65004E6FFA /* Networking */,
 				C114EDD928BEFB280048352F /* Spinner.swift */,
 			);
@@ -357,13 +377,17 @@
 				C1F628A828B5BDD800D6170E /* LoginViewController.swift in Sources */,
 				C114EDD828BEF7A70048352F /* LoginViewModel.swift in Sources */,
 				C114EDDA28BEFB280048352F /* Spinner.swift in Sources */,
+				C180E4A328C52094004E6FFA /* HomeDataService.swift in Sources */,
 				C180E49F28C51BAF004E6FFA /* APIManager.swift in Sources */,
 				C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */,
 				C13D2CB028C420D200409B24 /* CollectionViewTableViewCell.swift in Sources */,
+				C1BAE79B28C52AA400B6DE84 /* EpisodesResponse.swift in Sources */,
 				C120E6EC28C014D7000CB1BF /* ExtensionSceneDelegate.swift in Sources */,
 				C1F628A628B5BDD800D6170E /* SceneDelegate.swift in Sources */,
 				C16AD55528BAC07500A1F225 /* HomeViewController.swift in Sources */,
 				C13D2CB628C453D500409B24 /* HeaderUIView.swift in Sources */,
+				C1BAE79D28C52B6700B6DE84 /* LocationsResponse.swift in Sources */,
+				C180E4A628C5285B004E6FFA /* CharactersResponse.swift in Sources */,
 				C180E4A128C51D6C004E6FFA /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
