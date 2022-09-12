@@ -56,7 +56,13 @@ extension HomeViewModel {
 extension HomeViewModel{
     
     func getEpisodes() {
-        
+        homeService?.fetchEpisodes(onComplete: { episodes in
+            self.episodes = episodes
+            self.delegate?.loading()
+            self.delegate?.reloadData()
+        }, onError: { error in
+            self.delegate?.show(error: error)
+        })
     }
     
     func getEpisodesCount() -> Int {
@@ -74,7 +80,13 @@ extension HomeViewModel{
 extension HomeViewModel {
     
     func getLocations() {
-        
+        homeService?.fetchLocations(onComplete: { locations in
+            self.locations = locations
+            self.delegate?.loading()
+            self.delegate?.reloadData()
+        }, onError: { error in
+            self.delegate?.show(error: error)
+        })
     }
     
     func getLocationsCount() -> Int {

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C10646DB28CFDA8C000E3528 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10646DA28CFDA8C000E3528 /* HomeViewModel.swift */; };
+		C10646DD28CFE385000E3528 /* ItemsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C10646DC28CFE385000E3528 /* ItemsCollectionViewCell.swift */; };
 		C114EDD828BEF7A70048352F /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EDD728BEF7A70048352F /* LoginViewModel.swift */; };
 		C114EDDA28BEFB280048352F /* Spinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = C114EDD928BEFB280048352F /* Spinner.swift */; };
 		C120E6EC28C014D7000CB1BF /* ExtensionSceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C120E6EB28C014D7000CB1BF /* ExtensionSceneDelegate.swift */; };
@@ -34,6 +35,7 @@
 		010EF8AFEA573FD8D83DB691 /* Pods_Rick_Morty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Rick_Morty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F1598C5F3CD478181D6BECF /* Pods-Rick&Morty.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Rick&Morty.release.xcconfig"; path = "Target Support Files/Pods-Rick&Morty/Pods-Rick&Morty.release.xcconfig"; sourceTree = "<group>"; };
 		C10646DA28CFDA8C000E3528 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C10646DC28CFE385000E3528 /* ItemsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewCell.swift; sourceTree = "<group>"; };
 		C114EDD728BEF7A70048352F /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		C114EDD928BEFB280048352F /* Spinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Spinner.swift; sourceTree = "<group>"; };
 		C120E6EB28C014D7000CB1BF /* ExtensionSceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionSceneDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				C13D2CAF28C420D200409B24 /* CollectionViewTableViewCell.swift */,
+				C10646DC28CFE385000E3528 /* ItemsCollectionViewCell.swift */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -381,6 +384,7 @@
 				C1F628A828B5BDD800D6170E /* LoginViewController.swift in Sources */,
 				C114EDD828BEF7A70048352F /* LoginViewModel.swift in Sources */,
 				C114EDDA28BEFB280048352F /* Spinner.swift in Sources */,
+				C10646DD28CFE385000E3528 /* ItemsCollectionViewCell.swift in Sources */,
 				C180E4A328C52094004E6FFA /* HomeDataService.swift in Sources */,
 				C180E49F28C51BAF004E6FFA /* APIManager.swift in Sources */,
 				C1F628A428B5BDD800D6170E /* AppDelegate.swift in Sources */,
