@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ItemsCollectionViewCell: UICollectionViewCell {
     
@@ -44,9 +45,17 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configure(with urlImage: String = "Rick&MortyTitle", and itemName: String) {
-        // Aca usare la libreria para cargar la imagen
-        imageView.image = UIImage(named: urlImage)
+    func configure(with urlImage: String = "Rick&MortyTitle", and itemName: String, notUrlImage: Bool) {
+        
+        // Si la api no tiene url de imagen, se carga una de los assets por defecto
+        if notUrlImage {
+            imageView.image = UIImage(named: urlImage)
+        }
+        else {
+            let url = URL(string: urlImage)
+            imageView.kf.setImage(with: url)
+        }
+        
         name.text = itemName
     }
 }
