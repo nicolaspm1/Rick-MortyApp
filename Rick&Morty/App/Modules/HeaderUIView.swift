@@ -13,7 +13,7 @@ class HeaderUIView: UIView {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
-        imageView.image = UIImage(named: "Rick&MortyTitle")
+        imageView.image = UIImage(named: "RickMortyHeader")
         return imageView
     }()
     

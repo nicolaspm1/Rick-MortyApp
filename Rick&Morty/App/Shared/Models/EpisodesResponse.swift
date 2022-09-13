@@ -22,7 +22,8 @@ struct EpisodeInfo: Codable {
 // MARK: - Result
 struct Episode: Codable {
     let id: Int
-    let name, airDate, episode: String
+    let name, episode: String
+    let airDate: String?
     let characters: [String]
     let url: String
     let created: String

@@ -47,7 +47,8 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     
     func configure(with item: Any) {
         
-        let imageName = "Rick&MortyTitle"
+        let defaultLocationsImages = "DefaultLocation"
+        let defaultEpisodesImages = "RickMortyEpisodes"
         
         if  let character = item as? Character {
             
@@ -57,11 +58,11 @@ class ItemsCollectionViewCell: UICollectionViewCell {
             
         }
         else if let episode = item as? Episode {
-            imageView.image = UIImage(named: imageName)
+            imageView.image = UIImage(named: defaultEpisodesImages)
             name.text = episode.name
         }
         else if let location = item as? Locations {
-            imageView.image = UIImage(named: imageName)
+            imageView.image = UIImage(named: defaultLocationsImages)
             name.text = location.name
         }
     }

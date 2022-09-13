@@ -46,16 +46,17 @@ class HomeDataService: HomeDataRepositoryProtocol {
     
     func fetchEpisodes(onComplete: @escaping ([Episode]) -> Void, onError: @escaping (String) -> Void) {
         
-        print(KUrl.episodes)
         APIManager.shared.get(url: KUrl.episodes) { response in
             switch response {
                     
                 case .success(let data):
                     do {
                         if let data = data {
+                            print(data)
                             self.decoder.keyDecodingStrategy = .convertFromSnakeCase
                             let episodeResponse = try self.decoder.decode(EpisodesResponse.self, from: data)
                             onComplete(episodeResponse.results)
+                            print(episodeResponse)
                         }
                         
                     } catch {
