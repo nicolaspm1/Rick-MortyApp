@@ -14,7 +14,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     
     private let imageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
     
@@ -45,17 +45,24 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     }
     
     
-    func configure(with urlImage: String = "Rick&MortyTitle", and itemName: String, notUrlImage: Bool) {
+    func configure(with item: Any) {
         
-        // Si la api no tiene url de imagen, se carga una de los assets por defecto
-        if notUrlImage {
-            imageView.image = UIImage(named: urlImage)
-        }
-        else {
-            let url = URL(string: urlImage)
+        let imageName = "Rick&MortyTitle"
+        
+        if  let character = item as? Character {
+            
+            let url = URL(string: character.image)
             imageView.kf.setImage(with: url)
+            name.text = character.name
+            
         }
-        
-        name.text = itemName
+        else if let episode = item as? Episode {
+            imageView.image = UIImage(named: imageName)
+            name.text = episode.name
+        }
+        else if let location = item as? Locations {
+            imageView.image = UIImage(named: imageName)
+            name.text = location.name
+        }
     }
 }
