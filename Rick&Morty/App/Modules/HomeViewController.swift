@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 enum Sections: Int {
     case apiCharacters = 0
@@ -16,7 +15,6 @@ enum Sections: Int {
 
 class HomeViewController: UIViewController {
     
-    private let homeService = HomeDataService()
     private let homeViewModel = HomeViewModel()
     
     let sectionTitles: [String] = ["Characters", "Episodes", "Locations"]
@@ -59,14 +57,7 @@ class HomeViewController: UIViewController {
     
     
     @objc func logOut() {
-        
-        let firebaseAuth = Auth.auth()
-        do {
-            try firebaseAuth.signOut()
-        } catch let signOutError as NSError {
-            print("Error signing out: %@", signOutError)
-        }
-        
+        homeViewModel.logOut()
         self.navigationController?.popViewController(animated: true)
     }
     

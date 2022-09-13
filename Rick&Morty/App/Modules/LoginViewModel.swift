@@ -20,6 +20,18 @@ class LoginViewModel {
     
     weak var delegate: LoginViewModelDelegate?
     
+    func validateFieldsNotEmptyOrNil(_ field1: String?,  _ field2: String?) -> Bool {
+        
+        guard let user = field1, user != "" else {
+            return false
+        }
+        
+        guard let password = field2, password != "" else {
+            return false
+        }
+        
+        return true
+    }
     
     func signInUserWith(email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in

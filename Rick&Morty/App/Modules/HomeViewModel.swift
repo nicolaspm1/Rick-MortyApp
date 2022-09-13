@@ -8,6 +8,7 @@
 //MARK: - TODO Refactor view Model
 
 import Foundation
+import FirebaseAuth
 
 protocol HomeDelegate: AnyObject {
     func loading()
@@ -29,8 +30,17 @@ class HomeViewModel {
     
 }
 
-//MARK: - Get characters
+//MARK: - Functions
 extension HomeViewModel {
+    
+    func logOut() {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+        } catch let signOutError as NSError {
+            print("Error signing out: %@", signOutError)
+        }
+    }
     
     func setArrayFor(section: Int, in cell: CollectionViewTableViewCell) {
         

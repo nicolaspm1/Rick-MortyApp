@@ -203,15 +203,10 @@ extension LoginViewController: UITextFieldDelegate {
     @objc private func textDidChange(_ textField: UITextField) {
         disableButtons()
         
-        guard let user = userNameTextField.text, user != "" else {
-            return
+        if loginViewModel.validateFieldsNotEmptyOrNil(userNameTextField.text, passwordTextField.text) {
+            
+            enableButtons()
         }
-        
-        guard let password = passwordTextField.text, password != "" else {
-            return
-        }
-        
-        enableButtons()
     }
 }
 
