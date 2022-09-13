@@ -17,6 +17,7 @@ enum Sections: Int {
 class HomeViewController: UIViewController {
     
     private let homeService = HomeDataService()
+    private let homeViewModel = HomeViewModel()
     
     let sectionTitles: [String] = ["Characters", "Episodes", "Locations"]
     
@@ -89,44 +90,17 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
-        switch indexPath.section {
-            case Sections.apiCharacters.rawValue:
-                
-                homeService.fetchCharacters { characters in
-                    cell.configure(with: characters)
-                } onError: { error in
-                    print(error)
-                }
-
-            case Sections.apiEpisodes.rawValue:
-                
-                homeService.fetchEpisodes { episodes in
-                    cell.configure(with: episodes)
-                } onError: { error in
-                    print(error)
-                }
-
-            case Sections.apiLocations.rawValue :
-                homeService.fetchLocations { locations in
-                    cell.configure(with: locations)
-                } onError: { error in
-                    print(error)
-                }
-
-            default:
-                return UITableViewCell()
-        }
-        
+        homeViewModel.setArrayFor(section: indexPath.section, in: cell)
         return cell
     }
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        195
+        350
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        40
+        20
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

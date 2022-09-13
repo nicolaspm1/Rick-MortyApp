@@ -47,15 +47,19 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 15, paddingLeft: 15, paddingBottom: 15, paddingRight: 15)
+        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 15, paddingRight: 15)
     }
     
     
     func configure(with arr: [Any]) {
         collectionViewItems = arr
         
+        let VC = UIViewController()
+        VC.showSpinner()
         DispatchQueue.main.async { [weak self] in
             self?.collectionView.reloadData()
+            VC.removeSpinner()
+            
         }
     }
 }

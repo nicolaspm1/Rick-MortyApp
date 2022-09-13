@@ -5,6 +5,8 @@
 //  Created by Pablo Manzur on 12/09/2022.
 //
 
+//MARK: - TODO Refactor view Model
+
 import Foundation
 
 protocol HomeDelegate: AnyObject {
@@ -17,9 +19,6 @@ protocol HomeDelegate: AnyObject {
 
 class HomeViewModel {
     
-    private var characters = [Character]()
-    private var episodes = [Episode]()
-    private var locations = [Locations]()
     
     weak var delegate: HomeDelegate?
     var homeService: HomeDataRepositoryProtocol?
@@ -33,67 +32,36 @@ class HomeViewModel {
 //MARK: - Get characters
 extension HomeViewModel {
     
-    func getCharacters() {
-        homeService?.fetchCharacters(onComplete: { characters in
-            self.characters = characters
-            self.delegate?.loading()
-            self.delegate?.reloadData()
-        }, onError: { error in
-            self.delegate?.show(error: error)
-        })
+    func setArrayFor(section: Int, in cell: CollectionViewTableViewCell) {
+        
+        switch section{
+            case Sections.apiCharacters.rawValue:
+                
+                homeService?.fetchCharacters { characters in
+                    cell.configure(with: characters)
+                } onError: { error in
+                    print(error)
+                }
+
+            case Sections.apiEpisodes.rawValue:
+                
+                homeService?.fetchEpisodes { episodes in
+                    cell.configure(with: episodes)
+                } onError: { error in
+                    print(error)
+                }
+
+            case Sections.apiLocations.rawValue :
+                homeService?.fetchLocations { locations in
+                    cell.configure(with: locations)
+                } onError: { error in
+                    print(error)
+                }
+                
+            default:
+                return
+        }
     }
     
-    func getCharactersCount() -> Int {
-        characters.count
-    }
-    
-    func getCharacterAt(index: Int) -> Character {
-        characters[index]
-    }
 }
 
-//MARK: - get episodes
-extension HomeViewModel{
-    
-    func getEpisodes() {
-        homeService?.fetchEpisodes(onComplete: { episodes in
-            self.episodes = episodes
-            self.delegate?.loading()
-            self.delegate?.reloadData()
-        }, onError: { error in
-            self.delegate?.show(error: error)
-        })
-    }
-    
-    func getEpisodesCount() -> Int {
-        episodes.count
-    }
-    
-    func getEpisodeAt(index: Int) -> Episode {
-        episodes[index]
-    }
-}
-
-
-
-//MARK: - get locations
-extension HomeViewModel {
-    
-    func getLocations() {
-        homeService?.fetchLocations(onComplete: { locations in
-            self.locations = locations
-            self.delegate?.loading()
-            self.delegate?.reloadData()
-        }, onError: { error in
-            self.delegate?.show(error: error)
-        })
-    }
-    
-    func getLocationsCount() -> Int {
-        locations.count
-    }
-    
-    func getLocationAt(index: Int) -> Locations {
-        locations[index]
-    }
-}

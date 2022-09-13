@@ -46,6 +46,7 @@ class HomeDataService: HomeDataRepositoryProtocol {
     
     func fetchEpisodes(onComplete: @escaping ([Episode]) -> Void, onError: @escaping (String) -> Void) {
         
+        print(KUrl.episodes)
         APIManager.shared.get(url: KUrl.episodes) { response in
             switch response {
                     
