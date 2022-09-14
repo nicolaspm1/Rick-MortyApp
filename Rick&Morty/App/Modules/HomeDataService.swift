@@ -52,11 +52,9 @@ class HomeDataService: HomeDataRepositoryProtocol {
                 case .success(let data):
                     do {
                         if let data = data {
-                            print(data)
                             self.decoder.keyDecodingStrategy = .convertFromSnakeCase
                             let episodeResponse = try self.decoder.decode(EpisodesResponse.self, from: data)
                             onComplete(episodeResponse.results)
-                            print(episodeResponse)
                         }
                         
                     } catch {

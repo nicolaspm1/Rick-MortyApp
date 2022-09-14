@@ -15,6 +15,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
         return imageView
     }()
     
@@ -22,6 +23,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = .black
         label.numberOfLines = 0
+        label.lineBreakMode = .byClipping
         label.text = ""
         return label
     }()
@@ -41,7 +43,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
         super.layoutSubviews()
         imageView.anchor(top: contentView.topAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, height: 140)
         
-        name.anchor(top: imageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 20, paddingLeft: 30, paddingBottom: 0, paddingRight: 20)
+        name.anchor(top: imageView.bottomAnchor, left: contentView.leftAnchor, right: contentView.rightAnchor, paddingTop: 20, paddingLeft: 5, paddingBottom: 0, paddingRight: 5)
     }
     
     

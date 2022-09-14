@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = .white
         view.addSubview(homeTableView)
         homeTableView.backgroundColor = .clear
-        let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 300))
+        let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 3))
         homeTableView.tableHeaderView = headerView
     }
     
@@ -87,11 +87,16 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        350
+//        UITableView.automaticDimension
+        280
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        20
+        15
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

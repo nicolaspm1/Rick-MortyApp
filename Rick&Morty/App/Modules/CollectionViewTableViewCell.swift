@@ -16,7 +16,6 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     private lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 140, height: 200)
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.register(ItemsCollectionViewCell.self, forCellWithReuseIdentifier: ItemsCollectionViewCell.identifier)
@@ -38,7 +37,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .clear
-        self.selectionStyle = .none
+        self.selectionStyle = .gray
     }
     
     required init?(coder: NSCoder) {
@@ -47,7 +46,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         contentView.addSubview(collectionView)
-        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 0, paddingLeft: 15, paddingBottom: 15, paddingRight: 15)
+        collectionView.anchor(top: topAnchor, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, paddingTop: 10, paddingLeft: 15, paddingBottom: 0, paddingRight: 15)
     }
     
     
@@ -66,7 +65,11 @@ class CollectionViewTableViewCell: UITableViewCell {
 
 //MARK: - CollectionViewCellDelegate and DataSource
 
-extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource {
+extension CollectionViewTableViewCell: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: frame.size.width / 3, height: collectionView.contentSize.height)
+    }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         1
