@@ -22,6 +22,7 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.delegate = self
         collectionView.dataSource = self
+        collectionView.backgroundColor = .clear
         return collectionView
     }()
 

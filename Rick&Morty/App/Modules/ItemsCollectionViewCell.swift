@@ -21,7 +21,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     
     private let name: UILabel = {
         let label = UILabel()
-        label.textColor = .black
+        label.textColor = .white
         label.numberOfLines = 0
         label.lineBreakMode = .byClipping
         label.text = ""
@@ -30,6 +30,7 @@ class ItemsCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        contentView.backgroundColor = .clear
         contentView.addSubview(imageView)
         contentView.addSubview(name)
     }

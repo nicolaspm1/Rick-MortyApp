@@ -36,7 +36,7 @@ class HomeViewController: UIViewController {
     }
     
     private func setup() {
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .black
         view.addSubview(homeTableView)
         homeTableView.backgroundColor = .clear
         let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 3))
@@ -52,6 +52,7 @@ class HomeViewController: UIViewController {
     private func setupNavigationBar() {
         navigationItem.hidesBackButton = true
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Log out", style: .plain, target: self, action: #selector(logOut))
+        self.navigationItem.rightBarButtonItem?.tintColor = .red
         self.title = "Home"
     }
     
@@ -103,9 +104,9 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
         guard let header = view as? UITableViewHeaderFooterView else {
             return
         }
-        header.textLabel?.font = .systemFont(ofSize: 18, weight: .bold)
+        header.textLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         header.textLabel?.frame = CGRect(x: header.bounds.origin.x + 20, y: header.bounds.origin.y, width: 100, height: header.bounds.height)
-        header.textLabel?.textColor = .black
+        header.textLabel?.textColor = .white
         header.textLabel?.text = header.textLabel?.text?.capitalized
     }
     

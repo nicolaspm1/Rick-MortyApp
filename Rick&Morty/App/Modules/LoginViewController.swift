@@ -32,8 +32,8 @@ class LoginViewController: UIViewController {
         userField.placeholder = "Email"
         userField.layer.borderWidth = 2
         userField.layer.cornerRadius = 3
-        userField.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
-        userField.layer.backgroundColor = CGColor(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.2339869619)
+        userField.layer.borderColor = CGColor(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.2339869619)
+        userField.layer.backgroundColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         userField.autocapitalizationType = .none
         userField.autocorrectionType = .no
         userField.setHeight(40)
@@ -50,8 +50,8 @@ class LoginViewController: UIViewController {
         passwordField.placeholder = "Password"
         passwordField.layer.borderWidth = 2
         passwordField.layer.cornerRadius = 3
-        passwordField.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
-        passwordField.layer.backgroundColor = CGColor(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.2339869619)
+        passwordField.layer.borderColor = CGColor(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 0.2339869619)
+        passwordField.layer.backgroundColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
         passwordField.autocapitalizationType = .none
         passwordField.isSecureTextEntry = true
         passwordField.setHeight(40)
@@ -102,13 +102,14 @@ class LoginViewController: UIViewController {
         let label = UILabel()
         label.text = "OR"
         label.textAlignment = .center
+        label.textColor = .white
         label.font = UIFont.boldSystemFont(ofSize: 14.0)
         return label
     }()
     
     private lazy var signInWithGooglebutton: GIDSignInButton = {
         let button = GIDSignInButton()
-        button.colorScheme = .dark
+        button.colorScheme = .light
         button.addTarget(self, action: #selector(signInWithGoogle), for: .touchUpInside)
         return button
     }()
@@ -158,7 +159,7 @@ class LoginViewController: UIViewController {
     
     
     private func setup(){
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = .black
         errorMessage.isHidden = true
         addSubviews()
         setConstraints()

@@ -4,7 +4,6 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -29,7 +28,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="secondarySystemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="hjf-K9-eZ3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="90c-CC-UEL"/>
                             <constraint firstItem="hjf-K9-eZ3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="bX6-0u-aiU"/>
@@ -44,8 +43,5 @@
     <resources>
         <image name="Rick&amp;MortyTitle" width="320" height="136"/>
         <image name="SplashImage" width="175" height="171"/>
-        <systemColor name="secondarySystemGroupedBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
     </resources>
 </document>
