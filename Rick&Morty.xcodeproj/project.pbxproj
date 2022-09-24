@@ -174,7 +174,6 @@
 			children = (
 				C180E4A428C5284B004E6FFA /* Models */,
 				C180E49D28C51B65004E6FFA /* Networking */,
-				C114EDD928BEFB280048352F /* Spinner.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -182,6 +181,7 @@
 		C1D0A8FF28BC58E900930A6C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				C114EDD928BEFB280048352F /* Spinner.swift */,
 				C1F628B728B5C04D00D6170E /* ExtensionForConstraints.swift */,
 				C120E6EB28C014D7000CB1BF /* ExtensionSceneDelegate.swift */,
 			);

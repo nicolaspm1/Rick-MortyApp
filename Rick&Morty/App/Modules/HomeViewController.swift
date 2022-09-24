@@ -39,7 +39,7 @@ class HomeViewController: UIViewController {
         self.view.backgroundColor = .black
         view.addSubview(homeTableView)
         homeTableView.backgroundColor = .clear
-        let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height / 3))
+        let headerView = HeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: view.frame.height / 2.5))
         homeTableView.tableHeaderView = headerView
     }
     
@@ -112,6 +112,14 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         sectionTitles[section]
+    }
+    
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let defaultOffSet = view.safeAreaInsets.top
+        let offset = scrollView.contentOffset.y - defaultOffSet
+        
+        navigationController?.navigationBar.transform = .init(translationX: 0, y: min(0, -offset))
     }
     
 }
