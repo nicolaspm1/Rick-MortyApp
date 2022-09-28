@@ -39,4 +39,5 @@ La vista principal es una pantalla de Login, en la que se utilza Firebase para a
 
 
 ### Vista 2
-Esta vista consta de un tableView en el que cada celda contiene un collectionView.
+Esta vista consta de un tableView en el que cada celda contiene un collectionView. Cada collectionView usa los datos provistos por la API mencionada arriba. Estos lo trae por medio de Alamofire. A excepción de los personajes, que incluyen imágenes para descargar a través de Kingfisher, tanto las locaciones como los episodios se utilizó una imagen por defecto para que siguiera el mismo formato que los personajes.
+
